@@ -24,16 +24,12 @@ export class Triangle implements Figure {
   // Propriedades da interface pública.
   public shape: Shape = 'triangle';
 
-  public color: Color;
-
-  // Comprimentos dos lados internos.
-  private a: number;
-
-  private b: number;
-
-  private c: number;
-
-  constructor(color: Color, a: number, b: number, c: number) {
+  constructor(
+    public color: Color,
+    private a: number,
+    private b: number,
+    private c: number,
+  ) {
     // Valida os lados e a desigualdade triangular.
     ensurePositive(a, 'Side a');
     ensurePositive(b, 'Side b');
@@ -45,11 +41,6 @@ export class Triangle implements Figure {
     if (longestSide >= perimeter - longestSide) {
       throw new Error(`sides ${a}, ${b} and ${c} can't form a triangle`);
     }
-
-    this.color = color;
-    this.a = a;
-    this.b = b;
-    this.c = c;
   }
 
   public getArea(): number {
@@ -70,16 +61,12 @@ export class Circle implements Figure {
   // Propriedades da interface pública.
   public shape: Shape = 'circle';
 
-  public color: Color;
-
-  // Raio interno.
-  private radius: number;
-
-  constructor(color: Color, radius: number) {
+  constructor(
+    public color: Color,
+    private radius: number,
+  ) {
     // Valida o raio.
     ensurePositive(radius, 'Radius');
-    this.color = color;
-    this.radius = radius;
   }
 
   public getArea(): number {
@@ -94,20 +81,14 @@ export class Rectangle implements Figure {
   // Propriedades da interface pública.
   public shape: Shape = 'rectangle';
 
-  public color: Color;
-
-  // Dimensões internas.
-  private width: number;
-
-  private height: number;
-
-  constructor(color: Color, width: number, height: number) {
+  constructor(
+    public color: Color,
+    private width: number,
+    private height: number,
+  ) {
     // Valida as dimensões.
     ensurePositive(width, 'Width');
     ensurePositive(height, 'Height');
-    this.color = color;
-    this.width = width;
-    this.height = height;
   }
 
   public getArea(): number {
